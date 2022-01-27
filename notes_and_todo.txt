@@ -29,7 +29,9 @@ Structure / scaffolding
     -restore()
         --builds game based on save file
     -highscores file that is loaded in each time
-
+    -CONSTANT starting state = "FEN starting string"
+    -has a board
+    -has pieces
   4. __init__.py()
 
   5. chess class (plays the game)
@@ -47,8 +49,7 @@ Structure / scaffolding
                 if player 2's player_turn
                   --win condition met?
                   --player_turn = player 1
-      --has a board
-      --has pieces
+
       --has a GameState
 
   6. Simulation -- Testing our strategies against eachother -- use two player classes passed in as command line arguments
