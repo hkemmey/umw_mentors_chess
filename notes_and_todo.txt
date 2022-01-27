@@ -1,0 +1,55 @@
+Structure / scaffolding
+  1. Board Class
+    - contains information about Board
+    - location of pieces
+    - 2d array of pieces (no piece represented by NULL)
+    - a way to print the board( to the terminal )
+
+  2. Abstract piece Class
+    -each piece is a subclass
+    -imagefile
+      //castling
+      //pawns moving forward two
+      //pawns become queens if on oppenants back row
+      //pawns of which back row is theirs
+        --pawns need count moves to check legal moves
+      -color is a variable
+      -position
+      -get position ??
+      -get_valid_moves()
+      -get_legal_moves()
+        -depends on other pieces too
+
+  3. GameState.py (Singleton)
+    -score
+    -state of Board
+    -save()
+        --creates a file that can restore the game state
+        --save the board state as a string (Forsyth-Edwards Notation (FEN))
+    -restore()
+        --builds game based on save file
+    -highscores file that is loaded in each time
+
+  4. __init__.py()
+
+  5. chess class (plays the game)
+      -- rules of some kind (ie, check, checkmate, stalemate)
+      -- pygame loop
+          --each loop represents a turn
+            --two conditional for each player
+                if player 1's turn
+                  --move a piece
+                  --capture if necesarry
+                  --pawns to queens
+                  --win condition met?
+                  --player_turn = player 2
+
+                if player 2's player_turn
+                  --win condition met?
+                  --player_turn = player 1
+      --has a board
+      --has pieces
+      --has a GameState
+
+  6. Simulation -- Testing our strategies against eachother -- use two player classes passed in as command line arguments
+    -- compute moves by themselves
