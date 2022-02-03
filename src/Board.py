@@ -1,9 +1,17 @@
+#Forswyth Edwards Notation (look up "string notation chess")
+#do this if piece class stuff is already done with for now
+#see if we can build a board class with said notation
+
 class Board:
 
     board = [[], [], [], [], [], [], [], []] #fill later
     def __init__(self):
-        pass
+        self.defaultString = ""
+        __init__(defaultString)
 
+    def __init__(self, boardString):
+        #use boardString here to piece together the board here
+        pass
 
     def resetBoard(self):
         pass
