@@ -11,3 +11,6 @@ def main():
     while 1:
         screen.fill((255, 255, 255))
         pg.display.flip()
+
+if __name__ == "__main__":
+    main()
