@@ -1,3 +1,6 @@
+#create each individual piece's subclass so that they know what image they use
+#also create outline, whilst using the parent class effectively
+
 from abc import ABC, abstractmethod
 
 class Piece(ABC):
