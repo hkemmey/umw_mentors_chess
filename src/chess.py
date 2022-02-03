@@ -1,3 +1,13 @@
+import pygame as pg
 
-game_state = GameState.get_instance()
-board = game_state.get_board()
+WIDTH = HEIGHT = 512
+SPOTS = 8
+SQ_SIZE = HEIGHT/SPOTS
+
+
+def main():
+    pg.init()
+    screen = pg.display.set_mode((WIDTH, HEIGHT))
+    while 1:
+        screen.fill((255, 255, 255))
+        pg.display.flip()
