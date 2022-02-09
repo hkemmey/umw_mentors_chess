@@ -9,8 +9,12 @@ Structure / scaffolding
     -each piece is a subclass
     -imagefile
       //castling
+        --have a movement boolean for both kings and their 2 rooks, if the piece has moved /
+          you cannot castle
       //pawns moving forward two
+        --have a pawn movement counter
       //pawns become queens if on oppenants back row
+        --use the same counter to track what row it is on
       //pawns of which back row is theirs
         --pawns need count moves to check legal moves
       -color is a variable
@@ -26,6 +30,8 @@ Structure / scaffolding
     -save()
         --creates a file that can restore the game state
         --save the board state as a string (Forsyth-Edwards Notation (FEN))
+        --iterate through every spot on the board, using a count variable in order to /
+          track what space in the row we are in, and how many blank spaces occur in a row
     -restore()
         --builds game based on save file
     -highscores file that is loaded in each time

@@ -6,7 +6,7 @@ class Board:
 
     board = [[], [], [], [], [], [], [], []] #fill later
     def __init__(self):
-        self.defaultString = ""
+        self.defaultString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" #FEN starting position
         __init__(defaultString)
 
     def __init__(self, boardString):
