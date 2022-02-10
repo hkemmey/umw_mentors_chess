@@ -53,6 +53,11 @@ def draw_board(screen):
             y += SQ_SIZE
 
 
+def place_pieces(screen):
+    #####Sprite (pygame documentation for sprites)#####
+    pass
+
+    
 if __name__ == "__main__":
 
     pygame.init()
