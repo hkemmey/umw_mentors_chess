@@ -1,0 +1,10 @@
+if currentChar.type() = int
+	blank_length = int(currentChart)
+	iterate through a loop that creates as many blanks as blank_length is equal to
+
+else:
+	switch statement that checks letter type:
+		if else checks for capitalization to see which team it is on
+		declare/construct piece object based on this
+		
+		final switch statement check for slash, which makes it move onto the next row

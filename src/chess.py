@@ -55,6 +55,7 @@ def draw_board(screen):
 
 def place_pieces(screen):
     #####Sprite (pygame documentation for sprites)#####
+    
     pass
 
     

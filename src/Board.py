@@ -11,7 +11,21 @@ class Board:
 
     def __init__(self, boardString):
         #use boardString here to piece together the board here
-        pass
+        for x in boardString:
+            if (boardString[x:x+1] == " "):
+                break
+
+            currentChar = boardString[x:x+1]
+            #no chance to test if this will work; my first time working with try statements
+            try:
+                currentChar = int(currentChar)
+            except:
+                pass
+            else:
+                pass
+
+                
+
 
     def resetBoard(self):
         pass
