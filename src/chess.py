@@ -1,6 +1,17 @@
 import pygame
 
-WIDTH = HEIGHT = 1024
+
+
+class pieceSprite(pygame.sprite.Sprite):
+    def __init__(self, size, x_pos, y_pos, team):
+        super().__init__()
+        self.image = pygame.Surface([size, size])
+        self.image.fill(team)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = [x_pos, y_pos]
+
+
+WIDTH = HEIGHT = 512
 NUM_SQUARES_PER_ROW = 8
 SQ_SIZE = HEIGHT/NUM_SQUARES_PER_ROW
 COLOR_LIGHT = "#FEE3BF"
@@ -62,6 +73,11 @@ def place_pieces(screen):
 if __name__ == "__main__":
 
     pygame.init()
+    piece = pieceSprite(SQ_SIZE, 0, 0, BLACK_LINE)
+
+
+    piece_group = pygame.sprite.Group()
+    piece_group.add(piece)
     chess_board = pygame.display.set_mode((WIDTH, HEIGHT))
 
     draw_board(chess_board)
@@ -74,6 +90,7 @@ if __name__ == "__main__":
                 running = False
 
         pygame.display.flip()
+        piece_group.draw(chess_board)
                 
 
 
