@@ -4,49 +4,66 @@
 import Piece
 
 class Board:
-
-    board = [[], [], [], [], [], [], [], []] #fill later
-    def __init__(self):
-        self.defaultString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" #FEN starting position
-        __init__(defaultString)
+        
 
     def __init__(self, boardString):
         #use boardString here to piece together the board here
+        self.defaultString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" #FEN starting position
+
+        if boardString == "":
+            boardString = self.defaultString
+        
         row = 0
+        self.boardArray = [[], [], [], [], [], [], [], []] #fill later
+        count = 0
         for x in boardString:
-            if (boardString[x:x+1] == " "):
+            if (x == " "):
                 break
 
-            currentChar = boardString[x:x+1]
+            
             #no chance to test if this will work; my first time working with try statements
             #also another thing im trying to figure out is whether or not its okay to really use this as a sort of/
             #if/else statement or not, mostly since the point of this is mostly just to prevent errors causing
             #the program to stop - Kevin
+            
             try:
-                blank_length = int(currentChar)
+                blank_length = int(x)
             except:
                 #match statement would be more functional, but the linter does not
                 #recognize it as valid
-                if (currentChar == "/"):
+                print("Except test:  " + x)
+                if (x == "/"):
                     row += 1
-                elif (currentChar == "r"): #lower case letter = black, black = False
-                    board[row].append(Piece.rook(False))
-                elif (currentChar == "R"):
-                    board[row].append(Piece.rook(True))
-                elif (currentChar == "n"):
-                    board[row].append(Piece.knight(False))
-                elif (currentChar == "N"):
-                    board[row].append(Piece.knight(True))
-                elif (currentChar == "b"):
-                    board[row].append(Piece.bishop(False))
-                elif (currentChar == "B"):
-                    board[row].append(Piece.bishop(True))
-                
+                elif (x == "p"):
+                   self.boardArray[row].append(Piece.pawn(False))
+                elif (x == "P"):
+                   self.boardArray[row].append(Piece.pawn(True))        
+                elif (x == "r"): #lower case letter = black, black = False
+                   self.boardArray[row].append(Piece.rook(False))
+                elif (x == "R"):
+                   self.boardArray[row].append(Piece.rook(True))
+                elif (x == "n"):
+                   self.boardArray[row].append(Piece.knight(False))
+                elif (x == "N"):
+                   self.boardArray[row].append(Piece.knight(True))
+                elif (x == "b"):
+                   self.boardArray[row].append(Piece.bishop(False))
+                elif (x == "B"):
+                   self.boardArray[row].append(Piece.bishop(True))
+                elif ( x == "q"):
+                   self.boardArray[row].append(Piece.queen(False))
+                elif (x == "Q"):
+                   self.boardArray[row].append(Piece.queen(True))    
+                elif ( x == "k"):
+                   self.boardArray[row].append(Piece.king(False))
+                elif (x == "K"):
+                   self.boardArray[row].append(Piece.king(True))        
             
             else:
-                for i in blank_length:
+                print("Else test  " + x)
+                for n in range(blank_length):
                     #None is pythons version of null
-                    board[row].append(None)
+                   self.boardArray[row].append(None)
 
 
     def resetBoard(self):
@@ -56,9 +73,13 @@ class Board:
         #also check if the specified spot is occupied by a piece
         pass
 
-    def printBoard(self):
-        #print all the pieces that are on the board as 2 letter symbols
-        #example: bK = black King, wKn = white knight
-        #empty spaces represented by "[_]"
-        #maybe divide out all spaces with | and _
-        pass
+    def getBoard(self):
+        return self.boardArray\
+
+
+
+
+
+#This is here for testing purposes: get rid of it when filling the board works
+gameBoard = Board("")
+print(gameBoard.getBoard())

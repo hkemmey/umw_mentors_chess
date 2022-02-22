@@ -1,6 +1,10 @@
 import pygame
+import Board
+import Piece
 
+game_Board = Board.Board("") #Passing "" as an argument makes it default string
 
+print(game_Board.boardArray)
 
 class pieceSprite(pygame.sprite.Sprite):
     def __init__(self, size, x_pos, y_pos, team):
@@ -9,6 +13,9 @@ class pieceSprite(pygame.sprite.Sprite):
         self.image.fill(team)
         self.rect = self.image.get_rect()
         self.rect.topleft = [x_pos, y_pos]
+
+
+
 
 
 WIDTH = HEIGHT = 512

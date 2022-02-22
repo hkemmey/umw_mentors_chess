@@ -28,7 +28,7 @@ class Piece(ABC):
     
 
 def pawn(Piece):
-    def __init__(self):
+    def __init__(self, team):
         Piece.__init__(team)
         self.t = "pawn"
 
@@ -44,7 +44,7 @@ def pawn(Piece):
     #make a class that checks the position of the pawn, and sees if it has reached the other side
 
 def rook(Piece):
-    def __init__(self):
+    def __init__(self, team):
         Piece.__init__(team)
 
     def setImage(self, team):
@@ -57,7 +57,7 @@ def rook(Piece):
         pass
 
 def knight(Piece):
-    def __init__(self):
+    def __init__(self, team):
         Piece.__init__(team)
 
     def setImage(self, team):
@@ -71,7 +71,7 @@ def knight(Piece):
     pass
 
 def bishop(Piece):
-    def __init__(self):
+    def __init__(self, team):
         Piece.__init__(team)
 
     def setImage(self, team):
@@ -85,7 +85,7 @@ def bishop(Piece):
     pass
 
 def queen(Piece):
-    def __init__(self):
+    def __init__(self, team):
         Piece.__init__(team)
 
     def setImage(self, team):
@@ -99,7 +99,7 @@ def queen(Piece):
     pass
 
 def king(Piece):
-    def __init__(self):
+    def __init__(self, team):
         Piece.__init__(team)
 
     def setImage(self, team):
