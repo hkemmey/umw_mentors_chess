@@ -1,84 +1,90 @@
 #Forswyth Edwards Notation (look up "string notation chess")
 #do this if piece class stuff is already done with for now
 #see if we can build a board class with said notation
-import Piece
+from Piece import Piece
+from Rook import Rook
+from King import King
+from Knight import Knight
+from Pawn import Pawn 
+from Bishop import Bishop
+from Queen import Queen
 
 class Board:
-        
+    defaultString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
-    def __init__(self, boardString):
-        #use boardString here to piece together the board here
-        self.defaultString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" #FEN starting position
+    #            try:
+    #                int(s)
+    #               #what happens if it is in integer
+    #            except Exception as e:
+    ###what happens if int(s) throws in error
+    def __init__(self):
+        row_strings = []
 
-        if boardString == "":
-            boardString = self.defaultString
-        
-        row = 0
-        self.boardArray = [[], [], [], [], [], [], [], []] #fill later
-        count = 0
-        for x in boardString:
-            if (x == " "):
-                break
-
-            
-            #no chance to test if this will work; my first time working with try statements
-            #also another thing im trying to figure out is whether or not its okay to really use this as a sort of/
-            #if/else statement or not, mostly since the point of this is mostly just to prevent errors causing
-            #the program to stop - Kevin
-            
+        row_str = ""
+        for s in self.defaultString:
             try:
-                blank_length = int(x)
-            except:
-                #match statement would be more functional, but the linter does not
-                #recognize it as valid
-                print("Except test:  " + x)
-                if (x == "/"):
-                    row += 1
-                elif (x == "p"):
-                   self.boardArray[row].append(Piece.pawn(False))  #lower case letter = black, black = False
-                elif (x == "P"):
-                   self.boardArray[row].append(Piece.pawn(True))        
-                elif (x == "r"): 
-                   self.boardArray[row].append(Piece.rook(False))
-                elif (x == "R"):
-                   self.boardArray[row].append(Piece.rook(True))
-                elif (x == "n"):
-                   self.boardArray[row].append(Piece.knight(False))
-                elif (x == "N"):
-                   self.boardArray[row].append(Piece.knight(True))
-                elif (x == "b"):
-                   self.boardArray[row].append(Piece.bishop(False))
-                elif (x == "B"):
-                   self.boardArray[row].append(Piece.bishop(True))
-                elif ( x == "q"):
-                   self.boardArray[row].append(Piece.queen(False))
-                elif (x == "Q"):
-                   self.boardArray[row].append(Piece.queen(True))    
-                elif ( x == "k"):
-                   self.boardArray[row].append(Piece.king(False))
-                elif (x == "K"):
-                   self.boardArray[row].append(Piece.king(True))        
-            else:
-               print("Else test  " + x)
-               for n in range(blank_length):
-                  #None is pythons version of null
-                  self.boardArray[row].append(None)
+                x = int(s)
+                row_str += ("*" * x)
 
+            except Exception as e:
+                if s == "/":
+                    row_strings.append(row_str)
+                    row_str = ""
+                elif s == " ":
+                    row_strings.append(row_str)
+                    break
+                else:
+                    row_str += s
+
+        boardArray = [[], [], [], [], [], [], [], []] #fill later
+        cur_row = 0
+        print(row_strings)
+        for row in boardArray:
+            for c in row_strings[cur_row]:
+                if c == 'r':
+                    row.append(Rook("Black"))
+                elif c == 'R':
+                    row.append(Rook("White"))
+                elif c == "p":
+                    row.append(Pawn("Black"))
+                elif c == "P":
+                    row.append(Pawn("White"))
+                elif c == "q":
+                    row.append(Queen("Black"))
+                elif c == "Q":
+                    row.append(Queen("White"))
+                elif c == "k":
+                    row.append(King("Black"))
+                elif c == "K":
+                    row.append(King("White"))
+                elif c == "b":
+                    row.append(Bishop("Black"))
+                elif c == "B":
+                    row.append(Bishop("White"))
+                elif c == "n":
+                    row.append(Knight("Black"))
+                elif c == "N":
+                    row.append(Knight("White"))
+                elif c == "*":
+                    row.append(None)
+            cur_row += 1
+        self.boardArray = boardArray
 
     def resetBoard(self):
         pass
+
     def getPiece(self):
         #get a piece from a specified coordinate
         #also check if the specified spot is occupied by a piece
         pass
 
     def getBoard(self):
-        return self.boardArray\
+        return self.boardArray
 
 
 
 
 
 #This is here for testing purposes: get rid of it when filling the board works
-gameBoard = Board("")
+gameBoard = Board()
 print(gameBoard.getBoard())
