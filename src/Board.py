@@ -35,10 +35,10 @@ class Board:
                 if (x == "/"):
                     row += 1
                 elif (x == "p"):
-                   self.boardArray[row].append(Piece.pawn(False))
+                   self.boardArray[row].append(Piece.pawn(False))  #lower case letter = black, black = False
                 elif (x == "P"):
                    self.boardArray[row].append(Piece.pawn(True))        
-                elif (x == "r"): #lower case letter = black, black = False
+                elif (x == "r"): 
                    self.boardArray[row].append(Piece.rook(False))
                 elif (x == "R"):
                    self.boardArray[row].append(Piece.rook(True))
@@ -58,12 +58,11 @@ class Board:
                    self.boardArray[row].append(Piece.king(False))
                 elif (x == "K"):
                    self.boardArray[row].append(Piece.king(True))        
-            
             else:
-                print("Else test  " + x)
-                for n in range(blank_length):
-                    #None is pythons version of null
-                   self.boardArray[row].append(None)
+               print("Else test  " + x)
+               for n in range(blank_length):
+                  #None is pythons version of null
+                  self.boardArray[row].append(None)
 
 
     def resetBoard(self):
