@@ -38,7 +38,7 @@ class Board:
 
         boardArray = [[], [], [], [], [], [], [], []] #fill later
         cur_row = 0
-        print(row_strings)
+        #print(row_strings)
         for row in boardArray:
             for c in row_strings[cur_row]:
                 if c == 'r':
@@ -80,11 +80,3 @@ class Board:
 
     def getBoard(self):
         return self.boardArray
-
-
-
-
-
-#This is here for testing purposes: get rid of it when filling the board works
-gameBoard = Board()
-print(gameBoard.getBoard())

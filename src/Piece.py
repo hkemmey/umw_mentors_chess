@@ -20,3 +20,6 @@ class Piece():
     def get_type(self):
         return self.type #CONTINUE FROM HERE: consider moving setImage here for more organized code, if
         #possible
+
+    def get_image_path(self):
+        return self.image_path

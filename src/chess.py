@@ -2,7 +2,7 @@ import pygame
 import Board
 import Piece
 
-game_Board = Board.Board("") #Passing "" as an argument makes it default string
+game_Board = Board.Board() #Passing "" as an argument makes it default string
 
 print(game_Board.boardArray)
 
