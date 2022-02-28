@@ -2,21 +2,9 @@ import pygame
 import Board
 import Piece
 
-game_Board = Board.Board() #Passing "" as an argument makes it default string
+game_Board = Board.Board()
 
 print(game_Board.boardArray)
-
-class pieceSprite(pygame.sprite.Sprite):
-    def __init__(self, size, x_pos, y_pos, team):
-        super().__init__()
-        self.image = pygame.Surface([size, size])
-        self.image.fill(team)
-        self.rect = self.image.get_rect()
-        self.rect.topleft = [x_pos, y_pos]
-
-
-
-
 
 WIDTH = HEIGHT = 512
 NUM_SQUARES_PER_ROW = 8
@@ -24,6 +12,20 @@ SQ_SIZE = HEIGHT/NUM_SQUARES_PER_ROW
 COLOR_LIGHT = "#FEE3BF"
 COLOR_DARK = "#B28E5F"
 BLACK_LINE = "#000000"
+
+class pieceSprite(pygame.sprite.Sprite):
+    def __init__(self, size, x_pos, y_pos, image_path):
+        super().__init__()
+        self.image = pygame.image.load(image_path)
+        self.image = pygame.transform.scale(self.image, size, size)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = [x_pos, y_pos]
+
+
+
+
+
+
 
 # initialize a pygame screen
 # draw a grid
@@ -80,7 +82,7 @@ def place_pieces(screen):
 if __name__ == "__main__":
 
     pygame.init()
-    piece = pieceSprite(SQ_SIZE, 0, 0, BLACK_LINE)
+    piece = pieceSprite(SQ_SIZE, 0, 0, "C:/Users/kaorellana-11/Documents/GitHub/umw_mentors_chess/images/bRook.png")
 
 
     piece_group = pygame.sprite.Group()

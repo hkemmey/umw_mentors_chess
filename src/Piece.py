@@ -3,9 +3,7 @@ from pygame import sprite
 #also create outline of each class, whilst using the parent class effectively
 #class Piece(pygame.sprite)
 
-class Piece():
-    dead = False
-    team = False #VERY IMPORTANT: False = Black, True = White
+class Piece(sprite.Sprite):
     
     def __init__(self, team): # team is a string, "white" or "black"
         self.team = team
