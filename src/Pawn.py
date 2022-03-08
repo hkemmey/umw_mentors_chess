@@ -2,7 +2,7 @@ import Piece
 import pygame
 
 class Pawn(Piece.Piece):
-    type = "Pawn"
+    piece_type = "Pawn"
     def __init__(self, color):
         self.color = color
 

@@ -2,9 +2,9 @@ import Piece
 import pygame
 
 class Rook(Piece.Piece):
-    type = "Rook"
+    piece_type = "Rook"
     def __init__(self, color):
-        #super().__init__(color)
+        super().__init__(color)
         self.color = color
 
         if color == "black":

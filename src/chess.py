@@ -16,8 +16,9 @@ BLACK_LINE = "#000000"
 class pieceSprite(pygame.sprite.Sprite):
     def __init__(self, size, x_pos, y_pos, image_path):
         super().__init__()
+        size = [size, size]
         self.image = pygame.image.load(image_path)
-        self.image = pygame.transform.scale(self.image, size, size)
+        self.image = pygame.transform.scale(self.image, size)
         self.rect = self.image.get_rect()
         self.rect.topleft = [x_pos, y_pos]
 

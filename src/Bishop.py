@@ -2,7 +2,7 @@ import Piece
 import pygame
 
 class Bishop(Piece.Piece):
-    type = "Bishop"
+    piece_type = "Bishop"
     def __init__(self, color):
         self.color = color
 

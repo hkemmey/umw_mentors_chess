@@ -2,7 +2,7 @@ from Piece import Piece
 import pygame
 
 class Queen(Piece):
-    type = "Queen"
+    piece_type = "Queen"
     def __init__(self, color):
         self.color = color
 
