@@ -3,9 +3,15 @@ from pygame import sprite
 #also create outline of each class, whilst using the parent class effectively
 #class Piece(pygame.sprite)
 
-class Piece():
+class Piece(sprite.Sprite):
     
-    def __init__(self, team): # team is a string, "white" or "black"
+    def __init__(self, team, size, x_pos, y_pos, image_path): # team is a string, "white" or "black"
+        super().__init__()
+        size = [size, size]
+        self.image = pygame.image.load(image_path)
+        self.image = pygame.transform.scale(self.image, size)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = [x_pos, y_pos]
         self.team = team
 
     def teamCheck(self):

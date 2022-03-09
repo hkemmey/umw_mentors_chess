@@ -8,6 +8,7 @@ from Knight import Knight
 from Pawn import Pawn 
 from Bishop import Bishop
 from Queen import Queen
+from chess import SQ_SIZE
 
 class Board:
     defaultString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
@@ -38,6 +39,7 @@ class Board:
 
         boardArray = [[], [], [], [], [], [], [], []] #fill later
         cur_row = 0
+        cur_col = 0
         #print(row_strings)
         for row in boardArray:
             for c in row_strings[cur_row]:
@@ -46,9 +48,9 @@ class Board:
                 elif c == 'R':
                     row.append(Rook("White"))
                 elif c == "p":
-                    row.append(Pawn("Black"))
+                    row.append(Pawn("Black", cur_row, cur_col, SQ_SIZE))
                 elif c == "P":
-                    row.append(Pawn("White"))
+                    row.append(Pawn("White", cur_row, cur_col, SQ_SIZE))
                 elif c == "q":
                     row.append(Queen("Black"))
                 elif c == "Q":
@@ -67,7 +69,9 @@ class Board:
                     row.append(Knight("White"))
                 elif c == "*":
                     row.append(None)
+                cur_col += 1
             cur_row += 1
+            cur_col = 0
         self.boardArray = boardArray
 
     def resetBoard(self):

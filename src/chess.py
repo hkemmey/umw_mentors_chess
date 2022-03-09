@@ -13,21 +13,6 @@ COLOR_LIGHT = "#FEE3BF"
 COLOR_DARK = "#B28E5F"
 BLACK_LINE = "#000000"
 
-class pieceSprite(pygame.sprite.Sprite):
-    def __init__(self, size, x_pos, y_pos, image_path):
-        super().__init__()
-        size = [size, size]
-        self.image = pygame.image.load(image_path)
-        self.image = pygame.transform.scale(self.image, size)
-        self.rect = self.image.get_rect()
-        self.rect.topleft = [x_pos, y_pos]
-
-
-
-
-
-
-
 # initialize a pygame screen
 # draw a grid
 # ligther color and a darker color alternating squares
@@ -83,11 +68,12 @@ def place_pieces(screen):
 if __name__ == "__main__":
 
     pygame.init()
-    piece = pieceSprite(SQ_SIZE, 0, 0, "C:/Users/kaorellana-11/Documents/GitHub/umw_mentors_chess/images/bRook.png")
-
-
     piece_group = pygame.sprite.Group()
+    for piece in game_Board.boardArray:
+        if piece == None:
+            continue
     piece_group.add(piece)
+
     chess_board = pygame.display.set_mode((WIDTH, HEIGHT))
 
     draw_board(chess_board)
