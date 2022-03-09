@@ -1,4 +1,5 @@
 from pygame import sprite
+import pygame
 #create each individual 's subclass so that they know what image they use
 #also create outline of each class, whilst using the parent class effectively
 #class Piece(pygame.sprite)

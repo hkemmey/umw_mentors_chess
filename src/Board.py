@@ -8,7 +8,6 @@ from Knight import Knight
 from Pawn import Pawn 
 from Bishop import Bishop
 from Queen import Queen
-from chess import SQ_SIZE
 
 class Board:
     defaultString = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
@@ -37,36 +36,39 @@ class Board:
                 else:
                     row_str += s
 
-        boardArray = [[], [], [], [], [], [], [], []] #fill later
+        boardArray = [[], [], [], [], [], [], [], []]
         cur_row = 0
         cur_col = 0
         #print(row_strings)
+        from chess import SQ_SIZE #have to import here, otherwise circular import error occurs
         for row in boardArray:
             for c in row_strings[cur_row]:
                 if c == 'r':
-                    row.append(Rook("Black"))
+                    row.append(Rook("Black", cur_row, cur_col, SQ_SIZE))
+                    print("bRook: " + str(cur_row) + " " + str(cur_col))
                 elif c == 'R':
-                    row.append(Rook("White"))
+                    row.append(Rook("White", cur_row, cur_col, SQ_SIZE))
+                    print("wRook: " + str(cur_row) + " " + str(cur_col))
                 elif c == "p":
                     row.append(Pawn("Black", cur_row, cur_col, SQ_SIZE))
                 elif c == "P":
                     row.append(Pawn("White", cur_row, cur_col, SQ_SIZE))
                 elif c == "q":
-                    row.append(Queen("Black"))
+                    row.append(Queen("Black", cur_row, cur_col, SQ_SIZE))
                 elif c == "Q":
-                    row.append(Queen("White"))
+                    row.append(Queen("White", cur_row, cur_col, SQ_SIZE))
                 elif c == "k":
-                    row.append(King("Black"))
+                    row.append(King("Black", cur_row, cur_col, SQ_SIZE))
                 elif c == "K":
-                    row.append(King("White"))
+                    row.append(King("White", cur_row, cur_col, SQ_SIZE))
                 elif c == "b":
-                    row.append(Bishop("Black"))
+                    row.append(Bishop("Black", cur_row, cur_col, SQ_SIZE))
                 elif c == "B":
-                    row.append(Bishop("White"))
+                    row.append(Bishop("White", cur_row, cur_col, SQ_SIZE))
                 elif c == "n":
-                    row.append(Knight("Black"))
+                    row.append(Knight("Black", cur_row, cur_col, SQ_SIZE))
                 elif c == "N":
-                    row.append(Knight("White"))
+                    row.append(Knight("White", cur_row, cur_col, SQ_SIZE))
                 elif c == "*":
                     row.append(None)
                 cur_col += 1

@@ -12,7 +12,7 @@ class Pawn(Piece.Piece):
             self.image_path = "../images/wPawn.png"
 
         x1, y1 = self.position
-        super.__init__(color, size, x1, y1, self.image_path)
+        super().__init__(color, size, x1, y1, self.image_path)
 
     
         # self.image_path = "../images/bPawn.png" if color == "black" else "../images/wPawn.png"

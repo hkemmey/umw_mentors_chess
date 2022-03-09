@@ -1,10 +1,9 @@
+#REMEMBER TO CHANGE DIRECTORY TO SRC WHEN RUNNING!
 import pygame
 import Board
 import Piece
 
-game_Board = Board.Board()
 
-print(game_Board.boardArray)
 
 WIDTH = HEIGHT = 512
 NUM_SQUARES_PER_ROW = 8
@@ -13,6 +12,9 @@ COLOR_LIGHT = "#FEE3BF"
 COLOR_DARK = "#B28E5F"
 BLACK_LINE = "#000000"
 
+game_Board = Board.Board()
+
+#print(game_Board.boardArray)
 # initialize a pygame screen
 # draw a grid
 # ligther color and a darker color alternating squares
