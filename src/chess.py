@@ -71,10 +71,12 @@ if __name__ == "__main__":
 
     pygame.init()
     piece_group = pygame.sprite.Group()
-    for piece in game_Board.boardArray:
-        if piece == None:
-            continue
-    piece_group.add(piece)
+    for row in game_Board.boardArray:
+        for piece in row:
+            if piece == None:
+                continue
+            else:
+                piece_group.add(piece)
 
     chess_board = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -89,7 +91,3 @@ if __name__ == "__main__":
 
         pygame.display.flip()
         piece_group.draw(chess_board)
-                
-
-
-    
