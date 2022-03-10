@@ -42,7 +42,7 @@ class Board:
         #print(row_strings)
         from chess import SQ_SIZE #have to import here, otherwise circular import error occurs
         for row in boardArray:
-            for c in row_strings[cur_row]:
+            for c in row_strings[cur_col]:
                 if c == 'r':
                     row.append(Rook("Black", cur_row, cur_col, SQ_SIZE))
                     print("bRook: " + str(cur_row) + " " + str(cur_col))
@@ -71,9 +71,9 @@ class Board:
                     row.append(Knight("White", cur_row, cur_col, SQ_SIZE))
                 elif c == "*":
                     row.append(None)
-                cur_col += 1
-            cur_row += 1
-            cur_col = 0
+                cur_row += 1
+            cur_col += 1
+            cur_row = 0
         self.boardArray = boardArray
 
     def resetBoard(self):

@@ -6,7 +6,7 @@ class Pawn(Piece.Piece):
     def __init__(self, color, x, y, size):
         self.color = color
         self.position = (x * size, y * size)
-        if color == "black":
+        if color == "Black":
             self.image_path = "../images/bPawn.png"
         else:
             self.image_path = "../images/wPawn.png"
