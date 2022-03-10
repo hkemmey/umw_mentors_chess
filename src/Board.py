@@ -5,7 +5,7 @@ from Piece import Piece
 from Rook import Rook
 from King import King
 from Knight import Knight
-from Pawn import Pawn 
+from Pawn import Pawn
 from Bishop import Bishop
 from Queen import Queen
 
@@ -75,6 +75,7 @@ class Board:
             cur_col += 1
             cur_row = 0
         self.boardArray = boardArray
+        #print(boardArray)
 
     def resetBoard(self):
         pass

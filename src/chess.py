@@ -19,7 +19,7 @@ game_Board = Board.Board()
 # draw a grid
 # ligther color and a darker color alternating squares
 # Vertically, A-H, 1-8 Horizontally
-# 
+#
 # Put the images onto the board
 # return screen
 def draw_board(screen):
@@ -63,10 +63,14 @@ def draw_board(screen):
 
 def place_pieces(screen):
     #####Sprite (pygame documentation for sprites)#####
-    
+
     pass
 
-    
+def pixel_xy_pos(x, y):
+    x_pos = int(x / SQ_SIZE)
+    y_pos = int(y / SQ_SIZE)
+    return (x_pos, y_pos)
+
 if __name__ == "__main__":
 
     pygame.init()
@@ -81,13 +85,35 @@ if __name__ == "__main__":
     chess_board = pygame.display.set_mode((WIDTH, HEIGHT))
 
     draw_board(chess_board)
+    print(chess_board)
 
+    select_piece = None
     running = True
     while running:
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if select_piece == None:
+                    x, y = pygame.mouse.get_pos()
+                    col, row = pixel_xy_pos(x, y)
+                    print(col, row)
+                    select_piece = game_Board.boardArray[row][col]
+                    print(piece_group)
+                else:
+                    x, y = pygame.mouse.get_pos()
+                    col, row = pixel_xy_pos(x, y)
+                    print(x, y)
+                    #select_piece.kill()
+                    select_piece.set_pos(col * SQ_SIZE, row * SQ_SIZE)
+                    print(piece_group)
+                    #piece_group.remove(select_piece)
+                    select_piece = None
 
-        pygame.display.flip()
+
+
+        #pygame.display.flip()
+        #piece_group.clear()
         piece_group.draw(chess_board)
+        pygame.display.flip()

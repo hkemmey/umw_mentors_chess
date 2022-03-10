@@ -5,7 +5,7 @@ import pygame
 #class Piece(pygame.sprite)
 
 class Piece(sprite.Sprite):
-    
+
     def __init__(self, team, size, x_pos, y_pos, image_path): # team is a string, "white" or "black"
         super().__init__()
         size = [size, size]
@@ -28,3 +28,6 @@ class Piece(sprite.Sprite):
 
     def get_image_path(self):
         return self.image_path
+
+    def set_pos(self, x, y):
+        self.rect.topleft = [x, y]
