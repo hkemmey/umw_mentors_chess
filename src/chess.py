@@ -90,7 +90,8 @@ if __name__ == "__main__":
     select_piece = None
     running = True
 
-    col, row = None
+    col = None
+    row = None
     while running:
 
         for event in pygame.event.get():
@@ -100,17 +101,16 @@ if __name__ == "__main__":
                 x, y = pygame.mouse.get_pos()
                 if select_piece == None:
                     col, row = pixel_xy_pos(x, y)
-                    print(col, row)
+                    print("col, row:", col, row)
                     select_piece = game_Board.boardArray[row][col]
-                    print(piece_group)
                 else:
                     col2, row2 = pixel_xy_pos(x, y)
+                    print("col2/row2:", col2, row2)
                     if (col != col2 or row != row2): #player turn does not change
-                        print(x, y)
-                        #select_piece.kill()
-                        select_piece.set_pos(col * SQ_SIZE, row * SQ_SIZE)
-                        print(piece_group)
-                        #piece_group.remove(select_piece)
+                        print("They are not equal.")
+                        select_piece.set_pos(col2 * SQ_SIZE, row2 * SQ_SIZE)
+                        game_Board.boardArray[row2][col2] = game_Board.boardArray[row][col]
+                        game_Board.boardArray[row][col] = None
                     select_piece = None
 
         #pygame.display.flip()
