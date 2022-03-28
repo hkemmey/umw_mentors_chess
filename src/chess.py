@@ -89,29 +89,29 @@ if __name__ == "__main__":
 
     select_piece = None
     running = True
+
+    col, row = None
     while running:
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
                 if select_piece == None:
-                    x, y = pygame.mouse.get_pos()
                     col, row = pixel_xy_pos(x, y)
                     print(col, row)
                     select_piece = game_Board.boardArray[row][col]
                     print(piece_group)
                 else:
-                    x, y = pygame.mouse.get_pos()
-                    col, row = pixel_xy_pos(x, y)
-                    print(x, y)
-                    #select_piece.kill()
-                    select_piece.set_pos(col * SQ_SIZE, row * SQ_SIZE)
-                    print(piece_group)
-                    #piece_group.remove(select_piece)
+                    col2, row2 = pixel_xy_pos(x, y)
+                    if (col != col2 or row != row2): #player turn does not change
+                        print(x, y)
+                        #select_piece.kill()
+                        select_piece.set_pos(col * SQ_SIZE, row * SQ_SIZE)
+                        print(piece_group)
+                        #piece_group.remove(select_piece)
                     select_piece = None
-
-
 
         #pygame.display.flip()
         #piece_group.clear()

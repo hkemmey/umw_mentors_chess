@@ -8,10 +8,10 @@ class Rook(Piece.Piece):
         self.position = (x * size, y * size)
         if color == "Black":
             self.image_path = "../images/bRook.png"
-            print("bRook coords: " + str(x*size) + ", " + str(y*size))
+            #print("bRook coords: " + str(x*size) + ", " + str(y*size))
         else:
             self.image_path = "../images/wRook.png"
-            print("wRook coords: " + str(x*size) + ", " + str(y*size))
+            #print("wRook coords: " + str(x*size) + ", " + str(y*size))
 
         x1, y1 = self.position
         super().__init__(color, size, x1, y1, self.image_path)

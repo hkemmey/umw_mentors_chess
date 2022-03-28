@@ -45,10 +45,10 @@ class Board:
             for c in row_strings[cur_col]:
                 if c == 'r':
                     row.append(Rook("Black", cur_row, cur_col, SQ_SIZE))
-                    print("bRook: " + str(cur_row) + " " + str(cur_col))
+                    #print("bRook: " + str(cur_row) + " " + str(cur_col))
                 elif c == 'R':
                     row.append(Rook("White", cur_row, cur_col, SQ_SIZE))
-                    print("wRook: " + str(cur_row) + " " + str(cur_col))
+                    #print("wRook: " + str(cur_row) + " " + str(cur_col))
                 elif c == "p":
                     row.append(Pawn("Black", cur_row, cur_col, SQ_SIZE))
                 elif c == "P":
