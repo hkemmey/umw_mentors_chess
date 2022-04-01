@@ -12,6 +12,8 @@ COLOR_LIGHT = "#FEE3BF"
 COLOR_DARK = "#B28E5F"
 BLACK_LINE = "#000000"
 
+
+
 game_Board = Board.Board()
 
 #print(game_Board.boardArray)
@@ -60,12 +62,6 @@ def draw_board(screen):
             pygame.draw.line(screen, BLACK_LINE, (0, y), (WIDTH, y))
             y += SQ_SIZE
 
-
-def place_pieces(screen):
-    #####Sprite (pygame documentation for sprites)#####
-
-    pass
-
 def pixel_xy_pos(x, y):
     x_pos = int(x / SQ_SIZE)
     y_pos = int(y / SQ_SIZE)
@@ -74,6 +70,8 @@ def pixel_xy_pos(x, y):
 if __name__ == "__main__":
 
     pygame.init()
+    clock = pygame.time.Clock()
+
     piece_group = pygame.sprite.Group()
     for row in game_Board.boardArray:
         for piece in row:
@@ -101,19 +99,20 @@ if __name__ == "__main__":
                 x, y = pygame.mouse.get_pos()
                 if select_piece == None:
                     col, row = pixel_xy_pos(x, y)
-                    print("col, row:", col, row)
                     select_piece = game_Board.boardArray[row][col]
                 else:
                     col2, row2 = pixel_xy_pos(x, y)
-                    print("col2/row2:", col2, row2)
                     if (col != col2 or row != row2): #player turn does not change
-                        print("They are not equal.")
                         select_piece.set_pos(col2 * SQ_SIZE, row2 * SQ_SIZE)
+                        if (select_piece != None):
+                            piece_group.remove(game_Board.boardArray[row2][col2])
                         game_Board.boardArray[row2][col2] = game_Board.boardArray[row][col]
                         game_Board.boardArray[row][col] = None
                     select_piece = None
+                print(piece_group)
+                print(str(game_Board.boardArray[row][col]))
 
-        #pygame.display.flip()
-        #piece_group.clear()
+        draw_board(chess_board)
         piece_group.draw(chess_board)
         pygame.display.flip()
+        clock.tick(60)
