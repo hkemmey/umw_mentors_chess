@@ -90,6 +90,7 @@ if __name__ == "__main__":
 
     col = None
     row = None
+    player = "White"
     while running:
 
         for event in pygame.event.get():
@@ -100,6 +101,8 @@ if __name__ == "__main__":
                 if select_piece == None:
                     col, row = pixel_xy_pos(x, y)
                     select_piece = game_Board.boardArray[row][col]
+                    if select_piece != None and select_piece.color != player:
+                        select_piece = None
                 else:
                     col2, row2 = pixel_xy_pos(x, y)
                     if (col != col2 or row != row2): #player turn does not change
@@ -109,6 +112,7 @@ if __name__ == "__main__":
                         game_Board.boardArray[row2][col2] = game_Board.boardArray[row][col]
                         game_Board.boardArray[row][col] = None
                     select_piece = None
+                    player = "Black" if player == "White" else "White"
                 print(piece_group)
                 print(str(game_Board.boardArray[row][col]))
 
