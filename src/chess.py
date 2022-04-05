@@ -105,6 +105,13 @@ if __name__ == "__main__":
                         select_piece = None
                 else:
                     col2, row2 = pixel_xy_pos(x, y)
+                    #if the second click not a legal move do nothing
+                    if (col2, row2) not in select_piece.get_legal_moves():
+                        print("breaking")
+                        print(select_piece.get_legal_moves())
+                        print((col2, row2))
+                        break
+                    print("legal move")
                     if (col != col2 or row != row2): #player turn does not change
                         select_piece.set_pos(col2 * SQ_SIZE, row2 * SQ_SIZE)
                         if (select_piece != None):
