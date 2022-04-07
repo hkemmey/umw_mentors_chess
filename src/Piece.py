@@ -6,9 +6,10 @@ import pygame
 
 class Piece(sprite.Sprite):
 
-    def __init__(self, team, size, x_pos, y_pos, image_path): # team is a string, "white" or "black"
+    def __init__(self, team, size, x_pos, y_pos, image_path, row, col): # team is a string, "white" or "black"
         super().__init__()
         size = [size, size]
+        self.coords = (row, col)
         self.image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(self.image, size)
         self.rect = self.image.get_rect()
