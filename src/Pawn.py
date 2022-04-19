@@ -13,6 +13,7 @@ class Pawn(Piece.Piece):
 
         x_pixel, y_pixel = self.position
         self.coords = (row, col)
+        self.has_moved = False
         super().__init__(color, size, x_pixel, y_pixel, self.image_path, row, col)
 
 
@@ -21,9 +22,17 @@ class Pawn(Piece.Piece):
     def get_legal_moves(self):
         ##return list of tuples
         self.legal_moves = []
+        print("Start:  " + str(self.legal_moves))
         row, col = self.coords
         if self.color == "White":
+            if self.has_moved == False:
+                self.legal_moves.append((row, col-2))
             self.legal_moves.append((row, col-1))
         else:
-            self.legal_moves.append((row, col+1))
+            if self.has_moved == False:
+                self.legal_moves.append((row, col+2))
+            self.legal_moves.append((row, col+1))    
+        
+        self.has_moved = True
+        print("legal:  " + str(self.legal_moves))
         return self.legal_moves

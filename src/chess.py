@@ -108,8 +108,6 @@ if __name__ == "__main__":
                     #if the second click not a legal move do nothing
                     if (col2, row2) not in select_piece.get_legal_moves():
                         print("breaking")
-                        print(select_piece.get_legal_moves())
-                        print((col2, row2))
                         break
                     print("legal move")
                     if (col != col2 or row != row2): #player turn does not change
