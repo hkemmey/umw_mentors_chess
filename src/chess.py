@@ -116,10 +116,10 @@ if __name__ == "__main__":
                             piece_group.remove(game_Board.boardArray[row2][col2])
                         game_Board.boardArray[row2][col2] = game_Board.boardArray[row][col]
                         game_Board.boardArray[row][col] = None
+                    select_piece.coords = (row, col)
                     select_piece = None
                     player = "Black" if player == "White" else "White" #only happens if turn is completed successfully, i.e not on illegal move attempts or move cancels
-                print(piece_group)
-                print(str(game_Board.boardArray[row][col]))
+            print(player + "'s Turn.")
 
         draw_board(chess_board)
         piece_group.draw(chess_board)
