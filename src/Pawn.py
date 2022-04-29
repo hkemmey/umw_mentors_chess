@@ -22,7 +22,6 @@ class Pawn(Piece.Piece):
     def get_legal_moves(self):
         ##return list of tuples
         self.legal_moves = []
-        self.legal_moves.clear()
         #print("Start:  " + str(self.legal_moves))
         row, col = self.coords
         if self.color == "White":
@@ -32,7 +31,7 @@ class Pawn(Piece.Piece):
         else:
             if self.has_moved == False:
                 self.legal_moves.append((row, col+2))
-            self.legal_moves.append((row, col+1))    
+            self.legal_moves.append((row, col+1))
         
         self.has_moved = True
         print("legal:  " + str(self.legal_moves))

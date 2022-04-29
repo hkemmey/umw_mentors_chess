@@ -108,6 +108,8 @@ if __name__ == "__main__":
                     #if the second click not a legal move do nothing
                     if (col2, row2) not in select_piece.get_legal_moves():
                         print("breaking")
+                        print(player + "'s Turn.")
+                        select_piece = None
                         break
                     print("legal move")
                     if (col != col2 or row != row2): #player turn does not change
@@ -116,10 +118,11 @@ if __name__ == "__main__":
                             piece_group.remove(game_Board.boardArray[row2][col2])
                         game_Board.boardArray[row2][col2] = game_Board.boardArray[row][col]
                         game_Board.boardArray[row][col] = None
-                    select_piece.coords = (row, col)
+                    select_piece.coords = (col2, row2)
                     select_piece = None
                     player = "Black" if player == "White" else "White" #only happens if turn is completed successfully, i.e not on illegal move attempts or move cancels
-            print(player + "'s Turn.")
+                print(player + "'s Turn.")
+    
 
         draw_board(chess_board)
         piece_group.draw(chess_board)
