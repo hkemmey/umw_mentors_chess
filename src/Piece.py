@@ -1,9 +1,9 @@
 from pygame import sprite
 import pygame
+#from chess import game_Board
 #create each individual 's subclass so that they know what image they use
 #also create outline of each class, whilst using the parent class effectively
 #class Piece(pygame.sprite)
-
 class Piece(sprite.Sprite):
 
     def __init__(self, team, size, x_pos, y_pos, image_path, row, col): # team is a string, "white" or "black"

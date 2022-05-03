@@ -106,7 +106,7 @@ if __name__ == "__main__":
                 else:
                     col2, row2 = pixel_xy_pos(x, y)
                     #if the second click not a legal move do nothing
-                    if (col2, row2) not in select_piece.get_legal_moves():
+                    if (col2, row2) not in select_piece.get_legal_moves(game_Board.boardArray):
                         print("breaking")
                         print(player + "'s Turn.")
                         select_piece = None

@@ -1,5 +1,6 @@
 import Piece
-import pygame
+
+
 
 class Pawn(Piece.Piece):
     piece_type = "Pawn"
@@ -19,20 +20,39 @@ class Pawn(Piece.Piece):
 
         # self.image_path = "../images/bPawn.png" if color == "black" else "../images/wPawn.png"
 
-    def get_legal_moves(self):
+    def get_legal_moves(self, boardArray):
         ##return list of tuples
+        row, col = self.coords
+        print("piece: " + str(boardArray[row][col]))
         self.legal_moves = []
         #print("Start:  " + str(self.legal_moves))
-        row, col = self.coords
+        
+        
         if self.color == "White":
             if self.has_moved == False:
                 self.legal_moves.append((row, col-2))
             self.legal_moves.append((row, col-1))
+
+            if boardArray[row+1][col-1] != None and boardArray[row+1][col-1].color == "Black":
+                print("Hello!")
+                self.legal_moves.append((row+1, col-1))
+                
+            if boardArray[row-1][col+1] != None and boardArray[row-1][col+1].color == "Black":
+                print("Hi!")
+                self.legal_moves.append((row+1, col+1))
+            
+                
         else:
             if self.has_moved == False:
                 self.legal_moves.append((row, col+2))
             self.legal_moves.append((row, col+1))
         
-        self.has_moved = True
-        print("legal:  " + str(self.legal_moves))
+        
+
+        
+        #for curPiece in self.legal_moves:
+            #if curPiece != None:
+
+
+        
         return self.legal_moves
