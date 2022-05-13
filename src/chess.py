@@ -107,11 +107,10 @@ if __name__ == "__main__":
                     col2, row2 = pixel_xy_pos(x, y)
                     #if the second click not a legal move do nothing
                     if (col2, row2) not in select_piece.get_legal_moves(game_Board.boardArray):
-                        print("breaking")
-                        print(player + "'s Turn.")
+                        #print("breaking")
                         select_piece = None
                         break
-                    print("legal move")
+                    #print("legal move")
                     if (col != col2 or row != row2): #player turn does not change
                         select_piece.set_pos(col2 * SQ_SIZE, row2 * SQ_SIZE)
                         if (select_piece != None):
@@ -121,7 +120,7 @@ if __name__ == "__main__":
                     select_piece.coords = (col2, row2)
                     select_piece = None
                     player = "Black" if player == "White" else "White" #only happens if turn is completed successfully, i.e not on illegal move attempts or move cancels
-                print(player + "'s Turn.")
+                #print(player + "'s Turn.")
     
 
         draw_board(chess_board)

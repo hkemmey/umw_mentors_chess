@@ -23,7 +23,7 @@ class Pawn(Piece.Piece):
     def get_legal_moves(self, boardArray):
         ##return list of tuples
         row, col = self.coords
-        print("piece: " + str(boardArray[row][col]))
+        print("Coords: " + str(row) + "," + str(col))
         self.legal_moves = []
         #print("Start:  " + str(self.legal_moves))
         
@@ -33,13 +33,15 @@ class Pawn(Piece.Piece):
                 self.legal_moves.append((row, col-2))
             self.legal_moves.append((row, col-1))
 
-            if boardArray[row+1][col-1] != None and boardArray[row+1][col-1].color == "Black":
-                print("Hello!")
-                self.legal_moves.append((row+1, col-1))
+            print(boardArray[row-1][col-1])
+            if (boardArray[row-1][col-1] != None) and (boardArray[row-1][col-1].color == "Black"):
+                print("upleft")
+                self.legal_moves.append((row-1, col-1))
                 
-            if boardArray[row-1][col+1] != None and boardArray[row-1][col+1].color == "Black":
-                print("Hi!")
-                self.legal_moves.append((row+1, col+1))
+            print(boardArray[row+1][col-1])
+            if (boardArray[row+1][col-1] != None) and (boardArray[row+1][col-1].color == "Black"):
+                print("upright")
+                self.legal_moves.append((row+1, col-1))
             
                 
         else:
@@ -54,5 +56,5 @@ class Pawn(Piece.Piece):
             #if curPiece != None:
 
 
-        
+        self.has_moved = True
         return self.legal_moves
